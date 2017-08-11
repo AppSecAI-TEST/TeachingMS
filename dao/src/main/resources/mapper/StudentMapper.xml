@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.soft.dao.StudentDao">
+
+    <resultMap id="studentMap" type="com.soft.model.StudentModel">
+        <id column="stu_id" property="stuId" />
+        <result column="stu_name" property="name" />
+        <result column="stu_phone" property="phone" />
+        <result column="stu_qq" property="qq" />
+        <result column="stu_email" property="email" />
+        <result column="stu_column" property="column" />
+        <result column="stu_row" property="row" />
+        <result column="class_id" property="classId" />
+    </resultMap>
+
+    <sql id="stuFields">
+        stu_name, stu_phone, stu_qq, stu_email, stu_column, stu_row, class_id
+    </sql>
+
+    <select id="findAll" resultMap="studentMap">
+        select stu_id, <include refid="stuFields" /> from t_stu
+    </select>
+</mapper>

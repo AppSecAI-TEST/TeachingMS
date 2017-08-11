@@ -1,7 +1,7 @@
 package com.soft.controller;
 
-import com.soft.model.User;
-import com.soft.service.IndexService;
+import com.soft.model.StudentModel;
+import com.soft.service.StudentService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,14 +15,14 @@ import java.util.List;
  * Created by admin on 2017/8/7.
  */
 @RestController
-@RequestMapping("/index")
-public class IndexController {
+@RequestMapping("/stu")
+public class StudentController {
 
     @Value("${test.msg}")
     private String msg;
 
     @Autowired
-    private IndexService indexService;
+    private StudentService studentService;
 
     @RequestMapping(value = "/default", method = RequestMethod.GET)
     public String index() {
@@ -31,7 +31,7 @@ public class IndexController {
 
     @ApiOperation(value = "查询所有记录.")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public List<User> findAll () {
-        return indexService.findAll();
+    public List<StudentModel> findAll () {
+        return studentService.findAll();
     }
 }
